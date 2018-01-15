@@ -1,0 +1,12 @@
+{
+  "name": "zprint-npm",
+  "version": "0.1.0",
+  "description": "Node.js wrapper for Clojure source code formatter",
+  "main": "js-src/index.js",
+  "scripts": {
+    "benchmark": "NODE_ENV=production node js-test/index.js"
+  },
+  "keywords": ["clojure", "prettier", "clj-format"],
+  "author": "Roman Liutikov",
+  "license": "MIT"
+}
