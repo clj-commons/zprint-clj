@@ -22,3 +22,6 @@ npm i zprint-clj
 const printFile = require('zprint-clj');
 const outputText = printFile(inputText, inputFilePath);
 ```
+
+## Editor plugins
+- [Atom](https://github.com/roman01la/zprint-atom)
