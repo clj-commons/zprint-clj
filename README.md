@@ -20,8 +20,13 @@ npm i zprint-clj
 
 ```js
 const printFile = require('zprint-clj');
-const outputText = printFile(inputText, inputFilePath);
+const outputText = format(inputText, inputFilePath, opts);
 ```
 
+### Options
+
+* `isHangEnabled` `true|false` — enable hang mode (disabled by default), slows down formatting, but results in better formatted output
+
 ## Editor plugins
-- [Atom](https://github.com/roman01la/zprint-atom)
+
+* [Atom](https://github.com/roman01la/zprint-atom)
