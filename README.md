@@ -1,4 +1,6 @@
-# ZPrint
+# ZPrint 📇
+
+<img src="logo.png" width=128 />
 
 _Node.js wrapper for [ZPrint](https://github.com/kkinnear/zprint) Clojure source code formatter_
 
