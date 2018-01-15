@@ -5,9 +5,10 @@
 (let [start (System/nanoTime)]
   (b/build "src"
            {:main 'zprint-clj.core,
-            :output-to "out/main.js",
+            :output-to "out/main-debug.js",
             :output-dir "out",
             :optimizations :advanced,
+            :pseudo-names true,
             :static-fns true,
             :fn-invoke-direct true,
             :elide-asserts true,

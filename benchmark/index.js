@@ -1,16 +1,26 @@
 const fs = require('fs');
 const path = require('path');
-const printFile = require('../js-src/index');
+const format = require('../js-src/index');
 
-const FILE_NAME = 'core.cljs';
+const files = [
+  'stubs/100.cljs',
+  'stubs/700.cljs',
+  'stubs/1500.cljs',
+  'stubs/11k.cljs'
+];
 
-const input = fs.readFileSync(path.join(__dirname, FILE_NAME), 'utf8');
+const inputs = files.map(file => [
+  file,
+  fs.readFileSync(path.join(__dirname, file), 'utf8')
+]);
 
-function run() {
+function run(file, input) {
   const start = Date.now();
-  console.log('Formatting', FILE_NAME, '...');
-  printFile(input, FILE_NAME);
+  console.log('Formatting', file, '...');
+  format(input, file);
   console.log('Done', (Date.now() - start) / 1000, 's');
 }
 
-run();
+for (let i = 5; i > 0; i--) {
+  inputs.forEach(entry => run(...entry));
+}
