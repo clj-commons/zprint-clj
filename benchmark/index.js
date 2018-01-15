@@ -14,13 +14,19 @@ const inputs = files.map(file => [
   fs.readFileSync(path.join(__dirname, file), 'utf8')
 ]);
 
-function run(file, input) {
+function run([file, input], opts) {
   const start = Date.now();
   console.log('Formatting', file, '...');
-  format(input, file);
+  format(input, file, opts);
   console.log('Done', (Date.now() - start) / 1000, 's');
 }
 
-for (let i = 5; i > 0; i--) {
-  inputs.forEach(entry => run(...entry));
+console.log('{isHangEnabled: true}');
+for (let i = 3; i > 0; i--) {
+  inputs.forEach(entry => run(entry, { isHangEnabled: true }));
+}
+
+console.log('{isHangEnabled: false}');
+for (let i = 3; i > 0; i--) {
+  inputs.forEach(entry => run(entry, { isHangEnabled: false }));
 }
