@@ -18,8 +18,7 @@ if (program.input) {
   const out = printFile(src, filePath);
 
   if (program.out) {
-    const outPath = path.join(cwd, program.out);
-    fs.writeFileSync(outPath, out, 'utf8');
+    fs.writeFileSync(program.out, out, 'utf8');
   } else {
     process.stdout.write(out);
   }
