@@ -1,3 +1,4 @@
 out/*
 !out/main.js
 .cpcache
+node_modules

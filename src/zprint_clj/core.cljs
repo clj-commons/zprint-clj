@@ -1,5 +1,5 @@
-(ns zprint-npm.core
+(ns zprint-clj.core
   (:require [zprint.core :as zprint]))
 
-(defn ^:export print-file [s file-name]
+(defn ^:export format [s file-name]
   (zprint/zprint-file-str s file-name))
