@@ -8,10 +8,15 @@ _Node.js wrapper for [ZPrint](https://github.com/kkinnear/zprint) Clojure source
 
 ```
 npm i -g zprint-clj
+
 zprint-clj -i <file> -o <file>
 ```
 
 ### API
+
+```
+npm i zprint-clj
+```
 
 ```js
 const printFile = require('zprint-clj');
