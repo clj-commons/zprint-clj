@@ -52,6 +52,18 @@ index 907120f..965fdfa 100644
 +    :else {}))
 ```
 
+## Building
+
+**production**
+```
+clj scripts/build.clj
+```
+
+**debug**
+```
+clj scripts/build_debug.clj
+```
+
 ## Editor plugins
 
 * [Atom](https://github.com/roman01la/zprint-atom)
