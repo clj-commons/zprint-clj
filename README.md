@@ -55,18 +55,48 @@ index 907120f..965fdfa 100644
 ## Building
 
 **production**
+
 ```
 clj scripts/build.clj
 ```
 
 **debug**
+
 ```
 clj scripts/build_debug.clj
 ```
 
+## Local Development
+
+The following guide will outline how to locally develop `zprint-clj`:
+
+- Install `zprint-clj` dependencies
+
+  ```bash
+  npm install
+  ```
+
+- Make your your code changes in the `src` directory
+
+- Compile your changes
+
+  ```bash
+  scripts/debug.clj
+  ```
+
+- Create a test Clojure file with some test code you want to see formatted
+
+- Open the test file in atom
+
+- Run zprint-clj against your test file
+
+  ```clojure
+  js-src/dev-cli.js -i <filename> -o <filename>
+  ```
+
 ## Editor plugins
 
-* [Atom](https://github.com/roman01la/zprint-atom)
+- [Atom](https://github.com/roman01la/zprint-atom)
 
 ## License
 
