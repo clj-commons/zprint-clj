@@ -52,6 +52,12 @@ index 907120f..965fdfa 100644
 +    :else {}))
 ```
 
+### Advanced Customization
+
+You can configure `zprint-clj` with a `.zprintrc` file. The `.zprintrc` is written in EDN format.
+
+Your `.zprintrc` file will be resolved starting from the location of the file being formatted, and searching up the file tree until we find a `.zprintrc` file. If none found, we fall back on `zprint` [default settings](https://github.com/kkinnear/zprint#quick-start).
+
 ## Building
 
 **production**
