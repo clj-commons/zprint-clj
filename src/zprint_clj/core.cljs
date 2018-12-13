@@ -5,6 +5,10 @@
             ["os"        :as os]
             [zprint.core :as zprint]))
 
+;; Globals
+;; -----------------------------------------------------------------------------
+
+(def zprint-config-file ".zprintrc")
 
 ;; Zprint Options
 ;; -----------------------------------------------------------------------------
@@ -34,25 +38,36 @@
 
 
 (defn get-zprintrc-file-str
-  "Look up 'HOME' in the environment, and build a string to find ~/.zprintrc"
+  "Look for .zprintrc in the following environments:
+
+    1. in the current directory
+    2. in the 'HOME' dir
+
+  When a .zprintrc file is found, build a string path to the .zprintrc file.  If
+  nothing found, return nil"
   []
-  (let [home-str (os/homedir)]
-    (when home-str (str home-str "/.zprintrc"))))
+  (let [home-str                 (os/homedir)
+        local-zprintrc-file-str  ".zprintrc"
+        global-zprintrc-file-str (str home-str "/.zprintrc")]
+    (cond
+      (fs/existsSync local-zprintrc-file-str) local-zprintrc-file-str
+      (fs/existsSync global-zprintrc-file-str) global-zprintrc-file-str
+      :default nil)))
 
 
 (defn set-zprintrc!
-  "Read in any ~/.zprintrc file and set it in the options.
+  "Read in any .zprintrc file and set it in the options.
 
   Returns boolean"
   []
   (let [zprintrc-file-str (get-zprintrc-file-str)]
-    (try (when zprintrc-file-str
-           (let [zprintrc-str (slurp zprintrc-file-str)]
-             (when zprintrc-str
-               (zprint/set-options! (read-string zprintrc-str))
-               true)))
-         (catch :default e
-           false))))
+    (try
+      (when zprintrc-file-str
+        (let [zprintrc-str (slurp zprintrc-file-str)]
+          (when zprintrc-str
+            (zprint/set-options! (read-string zprintrc-str)))))
+      (catch :default e
+        false))))
 
 
 (defn- make-cfg
