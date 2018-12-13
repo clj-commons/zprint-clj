@@ -52,11 +52,16 @@ index 907120f..965fdfa 100644
 +    :else {}))
 ```
 
-### Advanced Customization
+### Advanced Configuration
 
 You can configure `zprint-clj` with a `.zprintrc` file. The `.zprintrc` is written in EDN format.
 
-Your `.zprintrc` file will be resolved starting from the location of the file being formatted, and searching up the file tree until we find a `.zprintrc` file. If none found, we fall back on `zprint` [default settings](https://github.com/kkinnear/zprint#quick-start).
+Your `.zprintrc` file will be resolved if it is found in one of two locations:
+
+1.  The current directory where the zprint-clj process was initialized
+2.  The global `HOME` directory
+
+If none found, we fall back on `zprint-clj` [default settings](https://github.com/kkinnear/zprint#quick-start).
 
 ## Building
 
@@ -74,7 +79,7 @@ clj scripts/build_debug.clj
 
 ## Local Development
 
-The following guide will outline how to locally develop `zprint-clj`:
+The following guide outlines how to locally develop `zprint-clj`. Please make sure you have the [clj cli tool installed](https://clojure.org/guides/deps_and_cli).
 
 - Install `zprint-clj` dependencies
 
@@ -87,18 +92,28 @@ The following guide will outline how to locally develop `zprint-clj`:
 - Compile your changes
 
   ```bash
-  scripts/debug.clj
+  clj scripts/build_debug.clj
   ```
+
+- Update `js-src/index` to look like this
+
+  ```bash
+  const zp = require("../out/main-debug").zprint_clj.core;
+  ```
+
+  > This tells zprint-clj to use the debug version
 
 - Create a test Clojure file with some test code you want to see formatted
 
-- Open the test file in atom
+- Open the test file in your editor of choice
 
 - Run zprint-clj against your test file
 
   ```clojure
-  js-src/dev-cli.js -i <filename> -o <filename>
+  js-src/cli.js -i <your-filename-here> -o <your-filename-here>
   ```
+
+  > If you are running in a different directory you will have to update above path to `js-src/cli.js`. The reason we run this instead of `main-debug` is because `cli`, or `index`, act as the entry points for JS for this library.
 
 ## Editor plugins
 
