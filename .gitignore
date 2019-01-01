@@ -1,5 +1,3 @@
 out/*
-!out/main.js
-!out/main-debug.js
 .cpcache
 node_modules
