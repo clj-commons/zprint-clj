@@ -1,6 +1,6 @@
 {
   "name": "zprint-clj",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Node.js wrapper for ZPrint Clojure source code formatter",
   "main": "js-src/index.js",
   "bin": {
