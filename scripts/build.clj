@@ -6,7 +6,7 @@
   (b/build "src"
            {:main 'zprint-clj.core,
             :target :nodejs
-            :output-to "out/main.js",
+            :output-to "main.js",
             :output-dir "out",
             :optimizations :simple,
             :static-fns true,
