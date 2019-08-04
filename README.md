@@ -1,5 +1,7 @@
 <img src="logo.png" width=128 />
 
+[![CircleCI](https://circleci.com/gh/clj-commons/zprint-clj.svg?style=svg)](https://circleci.com/gh/clj-commons/zprint-clj)
+
 _Node.js wrapper for [ZPrint](https://github.com/kkinnear/zprint) Clojure source code formatter_
 
 ## Usage
