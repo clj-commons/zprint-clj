@@ -8,10 +8,19 @@ _Node.js wrapper for [ZPrint](https://github.com/kkinnear/zprint) Clojure source
 
 ### CLI
 
+#### Install
 ```
 npm i -g zprint-clj
+```
 
-zprint-clj -i <file> -o <file>
+#### Format and write back
+```
+zprint-clj -i "./src/**/*.{clj,cljs,cljc,edn}" -o ./
+```
+
+#### Check formatting without writing (useful for CI)
+```
+zprint-clj --check "./src/**/*.{clj,cljs,cljc,edn}"
 ```
 
 ### API
