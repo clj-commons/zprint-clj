@@ -70,13 +70,13 @@ If none found, we fall back on `zprint-clj` [default settings](https://github.co
 **production**
 
 ```
-clj scripts/build.clj
+clojure scripts/build.clj
 ```
 
 **debug**
 
 ```
-clj scripts/build_debug.clj
+clojure scripts/build_debug.clj
 ```
 
 ## Local Development
@@ -94,7 +94,7 @@ The following guide outlines how to locally develop `zprint-clj`. Please make su
 - Compile your changes
 
   ```bash
-  clj scripts/build_debug.clj
+  clojure scripts/build_debug.clj
   ```
 
 - Update `js-src/index` to look like this
