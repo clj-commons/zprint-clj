@@ -3,9 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const program = require('commander');
 const format = require('./index');
+const pkg = require('../package.json')
 
 program
-  .version('0.1.0')
+  .version(pkg.version)
   .option('-i, --input <file>', 'Input file')
   .option('-o, --out <file>', 'Output file path')
   .option('--hang', 'Enable hang mode (better formatting, but 2x slowdown)')
