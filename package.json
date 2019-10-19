@@ -9,10 +9,16 @@
   "scripts": {
     "benchmark": "NODE_ENV=production node benchmark/index.js"
   },
-  "keywords": ["clojure", "prettier", "clj-format"],
+  "keywords": [
+    "clojure",
+    "prettier",
+    "clj-format",
+    "formatting"
+  ],
   "author": "Roman Liutikov",
   "license": "MIT",
   "dependencies": {
-    "commander": "^2.13.0"
+    "commander": "^2.13.0",
+    "fast-glob": "3.1.0"
   }
 }

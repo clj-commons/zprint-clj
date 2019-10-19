@@ -1,7 +1,8 @@
 (ns zprint-clj.core
-  (:require [cljs.reader :refer [read-string]]
-            [goog.object :as gobj]
-            [zprint.core :as zprint]))
+  (:require
+    [cljs.reader :refer [read-string]]
+    [goog.object :as gobj]
+    [zprint.core :as zprint]))
 
 (set! *warn-on-infer* true)
 
@@ -26,13 +27,14 @@
 ;; Utils
 ;; -----------------------------------------------------------------------------
 
-(defn slurp [file]
-  (-> (.readFileSync fs file "utf8")
-      (.toString)))
+(defn slurp
+  [file]
+  (->
+    (.readFileSync fs file "utf8")
+    (.toString)))
 
 
-(defn spit [file data]
-  (.writeFileSync fs file data))
+(defn spit [file data] (.writeFileSync fs file data))
 
 
 (defn get-zprintrc-file-str
@@ -44,8 +46,8 @@
   When a .zprintrc file is found, build a string path to the .zprintrc file.  If
   nothing found, return nil"
   []
-  (let [home-str                 (.homedir os)
-        local-zprintrc-file-str  ".zprintrc"
+  (let [home-str (.homedir os)
+        local-zprintrc-file-str ".zprintrc"
         global-zprintrc-file-str (str home-str "/.zprintrc")]
     (cond
       (.existsSync fs local-zprintrc-file-str) local-zprintrc-file-str
@@ -62,24 +64,22 @@
     (try
       (when zprintrc-file-str
         (let [zprintrc-str (slurp zprintrc-file-str)]
-          (when zprintrc-str
-            (zprint/set-options! (read-string zprintrc-str)))))
-      (catch :default e
-        false))))
+          (when zprintrc-str (zprint/set-options! (read-string zprintrc-str)))))
+      (catch :default e false))))
 
 
 (defn- make-cfg
   [opts]
-  (cond (false? (gobj/get opts "isHangEnabled")) no-hang
-        :else {}))
+  (cond
+    (false? (gobj/get opts "isHangEnabled")) no-hang
+    :else {}))
 
 
 ;; Main
 ;; -----------------------------------------------------------------------------
 
 (defn ^:export format
-  ([s file-name]
-   (format s file-name #js {:isHangEnabled true}))
+  ([s file-name] (format s file-name #js {:isHangEnabled true}))
   ([s file-name opts]
    ;; do not apply default zprint options when .zprintrc is found
    (let [opts* (if (set-zprintrc!) {} (make-cfg opts))]
