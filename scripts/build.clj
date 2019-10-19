@@ -8,10 +8,10 @@
             :target :nodejs
             :output-to "main.js",
             :output-dir "out",
-            :optimizations :simple,
+            :optimizations :advanced,
             :static-fns true,
             :fn-invoke-direct true,
             :elide-asserts true,
-            :optimize-constants true,
-            :verbose true})
+            :infer-externs true
+            :verbose false})
   (println "... done. Elapsed" (/ (- (System/nanoTime) start) 1e9) "seconds"))
