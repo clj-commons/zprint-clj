@@ -58,6 +58,8 @@ if (program.input || program.check) {
       process.exit(1);
     });
   } else {
-    process.stdout.write(out);
+    outs.forEach(out => {
+      process.stdout.write(out);
+    })
   }
 }
