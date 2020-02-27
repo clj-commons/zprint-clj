@@ -1,3 +1,4 @@
 out
 .cpcache
 node_modules
+main-debug.js

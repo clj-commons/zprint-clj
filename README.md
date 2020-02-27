@@ -109,7 +109,7 @@ The following guide outlines how to locally develop `zprint-clj`. Please make su
 - Update `js-src/index` to look like this
 
   ```bash
-  const zp = require("../out/main-debug").zprint_clj.core;
+  const zp = require("../main-debug").zprint_clj.core;
   ```
 
   > This tells zprint-clj to use the debug version
