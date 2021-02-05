@@ -59,8 +59,8 @@
   "Read in any .zprintrc file and set it in the options.
 
   Returns boolean"
-  []
-  (let [zprintrc-file-str (get-zprintrc-file-str)]
+  [explicit-zprintrc-path]
+  (let [zprintrc-file-str (or explicit-zprintrc-path (get-zprintrc-file-str))]
     (try
       (when zprintrc-file-str
         (let [zprintrc-str (slurp zprintrc-file-str)]
@@ -82,5 +82,8 @@
   ([s file-name] (format s file-name #js {:isHangEnabled true}))
   ([s file-name opts]
    ;; do not apply default zprint options when .zprintrc is found
-   (let [opts* (if (set-zprintrc!) {} (make-cfg opts))]
+   (let [opts* (if (set-zprintrc! nil) {} (make-cfg opts))]
+     (zprint/zprint-file-str s file-name opts*)))
+  ([s file-name opts config]
+   (let [opts* (if (set-zprintrc! config) {} (make-cfg opts))]
      (zprint/zprint-file-str s file-name opts*))))
